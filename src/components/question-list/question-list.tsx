@@ -14,11 +14,9 @@ export const QuestionList = ({ roomId }: QuestionListProps) => {
         <h2 className="font-semibold text-2xl text-foreground">Q&A</h2>
       </div>
 
-      {
-        !data?.map((question) => (
-          <QuestionItem key={question.id} question={question} />
-        ))
-      }
+      {data?.map((question) => (
+        <QuestionItem key={question.id} question={question} />
+      ))}
     </div>
   )
 }
