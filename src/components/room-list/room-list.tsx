@@ -26,7 +26,7 @@ export const RoomList = () => {
         {isLoading && (
           <p className="text-muted-foreground text-sm">Loading rooms...</p>
         )}
-        {data?.map((room) => (
+        {data?.results.map((room) => (
           <Link
             className="flex items-center justify-between rounded-lg border p-3 hover:bg-accent"
             key={room.id}
