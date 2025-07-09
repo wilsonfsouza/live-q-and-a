@@ -44,6 +44,7 @@ export const CreateRoomForm = () => {
       name,
       description,
     })
+    createRoomForm.reset()
   }
 
   return (
