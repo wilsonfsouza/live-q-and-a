@@ -41,7 +41,7 @@ export const RoomList = () => {
                 </Badge>
 
                 <Badge className="text-xs" variant="secondary">
-                  {room.questionCount} question(s)
+                  {room.questionsCount} question(s)
                 </Badge>
               </div>
             </div>
