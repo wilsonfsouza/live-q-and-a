@@ -20,5 +20,3 @@ export const QuestionList = ({ roomId }: QuestionListProps) => {
     </div>
   )
 }
-
-// continue at 12:06
