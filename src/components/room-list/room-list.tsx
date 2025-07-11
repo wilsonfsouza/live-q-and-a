@@ -47,7 +47,8 @@ export const RoomList = () => {
             </div>
 
             <span className="flex items-center gap-1 text-sm">
-              Join
+              <span className="hidden sm:block">Join</span>
+
               <ArrowRight className="size-3" />
             </span>
           </Link>
