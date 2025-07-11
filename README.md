@@ -1,9 +1,4 @@
 <p align="center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/wilsonfsouza/live-q-and-a>
-  <a href="https://github.com/wilsonfsouza/live-q-and-a/commits/main">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/wilsonfsouza/live-q-and-a>
-  </a>
-
    <img alt="License" src="https://img.shields.io/badge/license-MIT-%23F26C6C">
 
   <a href="https://www.linkedin.com/in/wilsonfsouza/">
@@ -12,7 +7,7 @@
 </p>
 
 <h1 align="center">
-    Live Streamming Q&A powered by Gemini AI
+    Live Streamming Q&A
 </h1>
 
 <h4 align="center">
