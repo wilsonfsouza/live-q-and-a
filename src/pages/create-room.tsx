@@ -5,7 +5,7 @@ export function CreateRoomPage() {
   return (
     <section className="min-h-screen px-4 py-8">
       <div className="mx-auto max-w-4xl">
-        <div className="grid-col-1 grid items-start gap-8 md:grid-cols-2">
+        <div className="grid-col-1 grid items-start gap-8">
           <CreateRoomForm />
 
           <RoomList />
