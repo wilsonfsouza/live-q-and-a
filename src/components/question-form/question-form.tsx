@@ -85,7 +85,7 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
             />
 
             <Button disabled={isSubmitting} type="submit">
-              Enviar pergunta
+              Send question
             </Button>
           </form>
         </Form>
