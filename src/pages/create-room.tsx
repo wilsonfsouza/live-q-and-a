@@ -16,7 +16,7 @@ export function CreateRoomPage() {
 
       <section className="min-h-screen">
         <div className="container mx-auto px-4 py-8">
-          <div className="grid-col-1 grid items-start gap-8">
+          <div className="flex flex-col gap-8">
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -32,6 +32,16 @@ export function CreateRoomPage() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
+
+            <div>
+              <h1 className="mb-2 font-bold text-3xl text-foreground">
+                Create a room
+              </h1>
+              <p className="text-muted-foreground">
+                Create a new room to start making questions and receiving
+                questions from our AI Agent.
+              </p>
+            </div>
 
             <CreateRoomForm />
           </div>
