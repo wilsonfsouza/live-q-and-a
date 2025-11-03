@@ -1,50 +1,75 @@
-import { ArrowLeft, Radio } from 'lucide-react'
-import { Link, Navigate, useParams } from 'react-router-dom'
-import { QuestionForm } from '@/components/question-form'
-import { QuestionList } from '@/components/question-list'
-import { Button } from '@/components/ui/button'
+import { Header } from "@/components/header/header";
+import { QuestionForm } from "@/components/question-form";
+import { QuestionList } from "@/components/question-list";
+import { Button } from "@/components/ui/button";
+import { useRecordRoomAudio } from "@/hooks/use-record-room";
+import { Mic, Radio } from "lucide-react";
+import { Navigate, useLocation, useParams } from "react-router-dom";
 
 type RoomParams = {
-  roomId: string
-}
+  roomId: string;
+};
 
 export function RoomPage() {
-  const params = useParams<RoomParams>()
+  const params = useParams<RoomParams>();
+  const { pathname } = useLocation();
+  const isHomePage = pathname === "/";
 
   if (!params.roomId) {
-    return <Navigate replace to="/" />
+    return <Navigate replace to="/" />;
   }
 
+  const { isRecording, startRecording, stopRecording } = useRecordRoomAudio(
+    params.roomId
+  );
+
   return (
-    <div className="min-h-screen bg-zinc-950">
-      <div className="container mx-auto max-w-4xl px-4 py-8">
-        <div className="mb-8">
-          <div className="mb-4 flex items-center justify-between">
-            <Link to="/">
-              <Button variant="outline">
-                <ArrowLeft className="mr-2 size-4" />
-                Back to home
-              </Button>
-            </Link>
-            <Link to={`/room/${params.roomId}/audio`}>
-              <Button className="flex items-center gap-2" variant="secondary">
-                <Radio className="size-4" />
-                Record audio
-              </Button>
-            </Link>
+    <>
+      <Header>
+        <>
+          {isRecording && (
+            <Button
+              className="flex items-center gap-2 cursor-pointer"
+              variant="secondary"
+              onClick={stopRecording}
+            >
+              <Mic className="size-4 animate-pulse" />
+              Pause recording
+            </Button>
+          )}
+
+          {!isRecording && (
+            <Button
+              className="flex items-center gap-2 cursor-pointer"
+              variant="secondary"
+              onClick={startRecording}
+            >
+              <Radio className="size-4" />
+              Record audio
+            </Button>
+          )}
+        </>
+      </Header>
+
+      <div className="min-h-screen">
+        <div className="container mx-auto px-4 py-8">
+          <div className="mb-8 px-4">
+            <div className="mb-4 flex items-center justify-between"></div>
+            <h1 className="mb-2 font-bold text-3xl text-foreground">
+              Q&A Room
+            </h1>
+            <p className="text-muted-foreground">
+              Write questions and receive answers from our AI agent.
+            </p>
           </div>
-          <h1 className="mb-2 font-bold text-3xl text-foreground">Q&A Room</h1>
-          <p className="text-muted-foreground">
-            Write questions and receive answers from our AI agent.
-          </p>
-        </div>
 
-        <div className="mb-8">
-          <QuestionForm roomId={params.roomId} />
-        </div>
+          <div className="mb-8">
+            <QuestionForm roomId={params.roomId} />
+          </div>
 
-        <QuestionList roomId={params.roomId} />
+          <QuestionList roomId={params.roomId} />
+        </div>
       </div>
-    </div>
-  )
+    </>
+  );
 }
