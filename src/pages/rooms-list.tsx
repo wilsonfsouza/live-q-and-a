@@ -1,4 +1,3 @@
-import { CreateRoomForm } from "@/components/create-room-form";
 import { Header } from "@/components/header";
 import { RoomList } from "@/components/room-list";
 import { Button } from "@/components/ui/button";
@@ -19,11 +18,16 @@ export function RoomsListPage() {
 
       <section className="min-h-screen">
         <div className="container mx-auto px-4 py-8">
-          <div className="grid-col-1 grid items-start gap-8">
-            <CreateRoomForm />
-
-            <RoomList />
+          <div className="mb-8">
+            <h1 className="mb-2 font-bold text-3xl text-foreground">
+              Recent rooms
+            </h1>
+            <p className="text-muted-foreground">
+              Shortcuts to the most recent rooms created.
+            </p>
           </div>
+
+          <RoomList />
         </div>
       </section>
     </>

@@ -1,11 +1,4 @@
 import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { useRooms } from "@/http/use-rooms";
 import { dayjs } from "@/lib/dayjs";
 import { ArrowRight } from "lucide-react";
@@ -15,24 +8,18 @@ export const RoomList = () => {
   const { data, isLoading } = useRooms();
 
   return (
-    <Card className="bg-none">
-      <CardHeader>
-        <CardTitle>Most recent rooms</CardTitle>
-        <CardDescription>
-          Shortcuts to the most recent rooms created
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-3">
+    <section>
+      <div className="flex flex-col gap-3">
         {isLoading && (
           <p className="text-muted-foreground text-sm">Loading rooms...</p>
         )}
         {data?.results.map((room) => (
           <Link
-            className="flex items-center justify-between rounded-lg border p-3 hover:bg-accent"
+            className="flex items-center justify-between transition-colors bg-card border-l-2 border-r-2 rounded-md p-3 hover:border-primary hover:bg-accent"
             key={room.id}
             to={`/room/${room.id}`}
           >
-            <div className="flex flex-1 flex-col gap-1">
+            <div className="flex flex-1 flex-col gap-3">
               <h3 className="font-medium">{room.name}</h3>
 
               <div className="flex items-center gap-2">
@@ -53,7 +40,7 @@ export const RoomList = () => {
             </span>
           </Link>
         ))}
-      </CardContent>
-    </Card>
+      </div>
+    </section>
   );
 };
