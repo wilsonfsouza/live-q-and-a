@@ -1,10 +1,17 @@
 import { Header } from "@/components/header/header";
 import { QuestionForm } from "@/components/question-form";
 import { QuestionList } from "@/components/question-list";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { useRecordRoomAudio } from "@/hooks/use-record-room";
 import { Mic, Radio } from "lucide-react";
-import { Navigate, useLocation, useParams } from "react-router-dom";
+import { Link, Navigate, useLocation, useParams } from "react-router-dom";
 
 type RoomParams = {
   roomId: string;
@@ -54,7 +61,22 @@ export function RoomPage() {
       <div className="min-h-screen">
         <div className="container mx-auto px-4 py-8">
           <div className="mb-8 px-4">
-            <div className="mb-4 flex items-center justify-between"></div>
+            <div className="mb-4 flex items-center justify-between">
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink asChild className="text-action-sm">
+                      <Link to="/">Forum</Link>
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <span className="text-action-sm text-primary">Room</span>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+
             <h1 className="mb-2 font-bold text-3xl text-foreground">
               Q&A Room
             </h1>
