@@ -15,8 +15,8 @@ export function CreateRoomPage() {
       <Header />
 
       <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col gap-8">
-          <Breadcrumb>
+        <div className="flex flex-col mb-8">
+          <Breadcrumb className="mb-4">
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild className="text-action-sm">
@@ -39,9 +39,9 @@ export function CreateRoomPage() {
               questions from our AI Agent.
             </p>
           </div>
-
-          <CreateRoomForm />
         </div>
+
+        <CreateRoomForm />
       </div>
     </section>
   );
