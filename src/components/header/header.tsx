@@ -10,12 +10,13 @@ interface HeaderProps {
 export function Header({ children }: HeaderProps) {
   const { pathname } = useLocation();
   const isHomePage = pathname === "/";
+  const isCreateRoomPage = pathname === "/room/create";
 
   return (
     <header className="border-b border-border bg-card">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          {!isHomePage && (
+          {(!isHomePage || isCreateRoomPage) && (
             <Button variant="outline" size="icon" asChild>
               <Link to="/">
                 <ArrowLeft className="h-5 w-5" />
