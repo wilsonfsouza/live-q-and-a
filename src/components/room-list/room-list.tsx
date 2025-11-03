@@ -15,15 +15,15 @@ export const RoomList = () => {
         )}
         {data?.results.map((room) => (
           <Link
-            className="flex items-center justify-between transition-colors bg-card border-l-2 border-r-2 rounded-md p-3 hover:border-primary hover:bg-accent"
+            className="flex items-center justify-between transition-colors bg-card border-l-2 border-r-2 rounded-md py-4 px-6 hover:border-primary hover:bg-accent"
             key={room.id}
             to={`/room/${room.id}`}
           >
             <div className="flex flex-1 flex-col gap-3">
               <h3 className="font-medium">{room.name}</h3>
 
-              <div className="flex items-center gap-2">
-                <Badge className="text-xs" variant="secondary">
+              <div className="flex items-center gap-2 mb-1">
+                <Badge className="text-xs" variant="outline">
                   {dayjs(room.createdAt).fromNow()}
                 </Badge>
 
