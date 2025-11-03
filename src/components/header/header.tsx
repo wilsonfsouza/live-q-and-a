@@ -13,7 +13,7 @@ export function Header({ children }: HeaderProps) {
   const isCreateRoomPage = pathname === "/room/create";
 
   return (
-    <header className="border-b border-border bg-card">
+    <header className="border-b border-border bg-sidebar">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
           {(!isHomePage || isCreateRoomPage) && (
