@@ -11,7 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useRecordRoomAudio } from "@/hooks/use-record-room";
 import { Mic, Radio } from "lucide-react";
-import { Link, Navigate, useLocation, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 
 type RoomParams = {
   roomId: string;
@@ -19,8 +19,6 @@ type RoomParams = {
 
 export function RoomPage() {
   const params = useParams<RoomParams>();
-  const { pathname } = useLocation();
-  const isHomePage = pathname === "/";
 
   if (!params.roomId) {
     return <Navigate replace to="/" />;
@@ -31,7 +29,7 @@ export function RoomPage() {
   );
 
   return (
-    <>
+    <section className="min-h-screen">
       <Header>
         <>
           {isRecording && (
@@ -58,40 +56,37 @@ export function RoomPage() {
         </>
       </Header>
 
-      <div className="min-h-screen">
-        <div className="container mx-auto px-4 py-8">
-          <div className="mb-8 px-4">
-            <div className="mb-4 flex items-center justify-between">
-              <Breadcrumb>
-                <BreadcrumbList>
-                  <BreadcrumbItem>
-                    <BreadcrumbLink asChild className="text-action-sm">
-                      <Link to="/">Forum</Link>
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem>
-                    <span className="text-action-sm text-primary">Room</span>
-                  </BreadcrumbItem>
-                </BreadcrumbList>
-              </Breadcrumb>
-            </div>
-
-            <h1 className="mb-2 font-bold text-3xl text-foreground">
-              Q&A Room
-            </h1>
-            <p className="text-muted-foreground">
-              Write questions and receive answers from our AI agent.
-            </p>
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8">
+          <div className="mb-4 flex items-center justify-between">
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild className="text-action-sm">
+                    <Link to="/">Forum</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <span className="text-action-sm text-primary">Room</span>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
           </div>
 
-          <div className="mb-8">
-            <QuestionForm roomId={params.roomId} />
-          </div>
-
-          <QuestionList roomId={params.roomId} />
+          <h1 className="mb-2 font-bold text-3xl text-foreground">Q&A Room</h1>
+          <p className="text-muted-foreground">
+            Write questions and receive answers from our Kitty AI assistant
+            based on the audio recorded.
+          </p>
         </div>
+
+        <div className="mb-8">
+          <QuestionForm roomId={params.roomId} />
+        </div>
+
+        <QuestionList roomId={params.roomId} />
       </div>
-    </>
+    </section>
   );
 }
