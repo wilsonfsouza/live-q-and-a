@@ -1,5 +1,5 @@
 import { CreateRoomForm } from "@/components/create-room-form";
-import { Header } from "@/components/header/header";
+import { Header } from "@/components/header";
 import {
   Breadcrumb,
   BreadcrumbItem,

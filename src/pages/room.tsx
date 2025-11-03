@@ -1,4 +1,4 @@
-import { Header } from "@/components/header/header";
+import { Header } from "@/components/header";
 import { QuestionForm } from "@/components/question-form";
 import { QuestionList } from "@/components/question-list";
 import {

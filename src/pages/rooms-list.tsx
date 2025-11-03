@@ -1,5 +1,5 @@
 import { CreateRoomForm } from "@/components/create-room-form";
-import { Header } from "@/components/header/header";
+import { Header } from "@/components/header";
 import { RoomList } from "@/components/room-list";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
@@ -10,7 +10,7 @@ export function RoomsListPage() {
     <>
       <Header>
         <Button variant="secondary" className="flex items-center gap-2" asChild>
-          <Link to="/create-room">
+          <Link to="/room/create">
             <Plus className="h-5 w-5" />
             Create room
           </Link>
