@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export function CreateRoomPage() {
+export function RoomsListPage() {
   return (
     <>
       <Header>

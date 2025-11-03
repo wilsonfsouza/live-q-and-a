@@ -1,21 +1,21 @@
-import { ArrowRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import { Badge } from '@/components/ui/badge'
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { useRooms } from '@/http/use-rooms'
-import { dayjs } from '@/lib/dayjs'
+} from "@/components/ui/card";
+import { useRooms } from "@/http/use-rooms";
+import { dayjs } from "@/lib/dayjs";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const RoomList = () => {
-  const { data, isLoading } = useRooms()
+  const { data, isLoading } = useRooms();
 
   return (
-    <Card>
+    <Card className="bg-none">
       <CardHeader>
         <CardTitle>Most recent rooms</CardTitle>
         <CardDescription>
@@ -55,5 +55,5 @@ export const RoomList = () => {
         ))}
       </CardContent>
     </Card>
-  )
-}
+  );
+};
