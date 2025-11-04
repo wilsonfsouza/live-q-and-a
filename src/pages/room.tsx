@@ -1,3 +1,4 @@
+import { AudioCheck } from "@/components/audio-check/audio-check";
 import { Header } from "@/components/header";
 import { QuestionForm } from "@/components/question-form";
 import { QuestionList } from "@/components/question-list";
@@ -26,16 +27,86 @@ export function RoomPage() {
     return <Navigate replace to="/" />;
   }
 
-  const { data } = useRoom(params.roomId);
+  const { data, isLoading } = useRoom(params.roomId);
 
   const { isRecording, startRecording, stopRecording } = useRecordRoomAudio(
     params.roomId
   );
 
+  if (isLoading) {
+    return (
+      <section className="min-h-screen">
+        <Header>
+          <>
+            <AudioCheck roomId={params.roomId} />
+
+            {isRecording && (
+              <Button
+                className="flex items-center gap-2 cursor-pointer"
+                variant="secondary"
+                onClick={stopRecording}
+              >
+                <Mic className="size-4 animate-pulse" />
+                Pause recording
+              </Button>
+            )}
+
+            {!isRecording && (
+              <Button
+                className="flex items-center gap-2 cursor-pointer"
+                variant="secondary"
+                onClick={startRecording}
+              >
+                <Radio className="size-4" />
+                Record audio
+              </Button>
+            )}
+          </>
+        </Header>
+
+        <div className="container mx-auto px-4 py-8">
+          <div className="mb-8">
+            <div className="mb-4 flex items-center justify-between">
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink asChild className="text-action-sm">
+                      <Link to="/">Forum</Link>
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <span className="text-action-sm text-primary">Room</span>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+
+            <h1 className="mb-2 font-bold text-3xl text-foreground">
+              Q&A Room
+            </h1>
+            <p className="text-muted-foreground">
+              Write questions and receive answers from our AI assistant based on
+              the audio recorded.
+            </p>
+          </div>
+
+          <div className="mb-8">
+            <QuestionForm roomId={params.roomId} />
+          </div>
+
+          <QuestionList roomId={params.roomId} />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="min-h-screen">
       <Header>
         <>
+          <AudioCheck roomId={params.roomId} />
+
           {isRecording && (
             <Button
               className="flex items-center gap-2 cursor-pointer"
