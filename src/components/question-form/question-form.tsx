@@ -48,6 +48,7 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
 
   async function handleCreateQuestion(data: CreateQuestionFormData) {
     await createQuestion(data);
+    form.reset();
   }
 
   return (
