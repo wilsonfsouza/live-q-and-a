@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateQuestion } from "@/http/use-create-question";
+import { useRoomAudioCheck } from "@/http/use-room-audio-check";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -36,6 +37,7 @@ interface QuestionFormProps {
 
 export function QuestionForm({ roomId }: QuestionFormProps) {
   const { mutateAsync: createQuestion } = useCreateQuestion(roomId);
+  const { data, isLoading } = useRoomAudioCheck(roomId);
 
   const form = useForm<CreateQuestionFormData>({
     resolver: zodResolver(createQuestionSchema),
@@ -46,6 +48,9 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
 
   const { isSubmitting } = form.formState;
 
+  const isAudioAvailable = !isLoading && !!data?.hasAudioRecorded;
+  const isFormDisabled = !isAudioAvailable || isSubmitting;
+
   async function handleCreateQuestion(data: CreateQuestionFormData) {
     await createQuestion(data);
     form.reset();
@@ -54,20 +59,23 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Usage notes:</CardTitle>
+        <CardTitle>Instructions:</CardTitle>
         <CardDescription>
           <ul className="pl-4 list-disc">
             <li>
-              {" "}
-              Only rooms <b className="text-primary">
-                with recorded audio
-              </b>{" "}
-              will be answered by Kitty AI assistant.
+              You <b className="text-destructive">cannot</b> create a question{" "}
+              <b className="text-destructive">without</b> a{" "}
+              <b className="text-primary">recorded audio</b>.
             </li>
             <li>
-              Questions made <b className="text-primary">before</b> audio was
-              recorded are <b className="text-destructive">not</b> retroactively
-              answered.
+              Your questions <b className="text-primary">will</b> be answered by
+              the AI assistant once the{" "}
+              <b className="text-primary">audio is available</b>.
+            </li>
+            <li>
+              Audio availability is{" "}
+              <b className="text-primary">displayed on the header</b> next to{" "}
+              <i>"Record audio"</i> button.
             </li>
           </ul>
         </CardDescription>
@@ -88,7 +96,7 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
                   <FormControl>
                     <Textarea
                       className="min-h-[100px]"
-                      disabled={isSubmitting}
+                      disabled={isFormDisabled}
                       placeholder="What would you like to know?"
                       {...field}
                     />
@@ -100,7 +108,7 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
 
             <div className="flex items-center md:justify-end">
               <Button
-                disabled={isSubmitting}
+                disabled={isFormDisabled}
                 type="submit"
                 className="w-full md:w-fit"
               >

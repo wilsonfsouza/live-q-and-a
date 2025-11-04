@@ -1,5 +1,6 @@
 /** biome-ignore-all lint/suspicious/noConsole: dev */
 import { env } from "@/env";
+import { useQueryClient } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 
 const isRecordingSupported =
@@ -8,6 +9,7 @@ const isRecordingSupported =
   typeof window.MediaRecorder === "function";
 
 export function useRecordRoomAudio(roomId: string) {
+  const queryClient = useQueryClient();
   const [isRecording, setIsRecording] = useState(false);
   const recorder = useRef<MediaRecorder | null>(null);
 
@@ -33,6 +35,10 @@ export function useRecordRoomAudio(roomId: string) {
     await fetch(`${env.VITE_APP_API_URL}/rooms/${roomId}/audio`, {
       method: "POST",
       body: formData,
+    });
+
+    await queryClient.invalidateQueries({
+      queryKey: ["get-room", "audio", roomId],
     });
   }
 
