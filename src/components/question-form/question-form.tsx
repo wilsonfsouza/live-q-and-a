@@ -59,7 +59,7 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Usage notes:</CardTitle>
+        <CardTitle>Instructions:</CardTitle>
         <CardDescription>
           <ul className="pl-4 list-disc">
             <li>
