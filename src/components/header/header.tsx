@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Cat } from "lucide-react";
+import { ArrowLeft, Bot } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 interface HeaderProps {
@@ -27,12 +27,12 @@ export function Header({ children }: HeaderProps) {
           <Link to="/" className="flex items-center gap-2">
             <div className="flex-shrink-0">
               <div className="flex size-8 items-center justify-center rounded-full bg-primary/10">
-                <Cat className="size-4 text-secondary-foreground" />
+                <Bot className="size-4 text-primary" />
               </div>
             </div>
 
             <span className="text-xl font-bold hidden md:block">
-              KITTY ASSISTANT
+              LECTURE ASSISTANT
             </span>
           </Link>
         </div>

@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { dayjs } from "@/lib/dayjs";
-import { Cat, Loader2, MessageSquare } from "lucide-react";
+import { Bot, Loader2, MessageSquare } from "lucide-react";
 
 interface Question {
   id: string;
@@ -21,7 +21,6 @@ export function QuestionItem({ question }: QuestionItemProps) {
     <Card>
       <CardContent>
         <div className="space-y-4">
-          {/* Question */}
           <div className="flex items-start space-x-3">
             <div className="flex-shrink-0">
               <div className="flex size-8 items-center justify-center rounded-full bg-primary/10">
@@ -40,7 +39,7 @@ export function QuestionItem({ question }: QuestionItemProps) {
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0">
                 <div className="flex size-8 items-center justify-center rounded-full bg-primary/10">
-                  <Cat className="size-4 text-secondary-foreground" />
+                  <Bot className="size-4 text-secondary-foreground" />
                 </div>
               </div>
               <div className="flex-1">
