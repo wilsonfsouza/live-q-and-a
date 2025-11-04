@@ -1,27 +1,26 @@
-import { Bot, Loader2, MessageSquare } from 'lucide-react'
-import { Card, CardContent } from '@/components/ui/card'
-import { dayjs } from '@/lib/dayjs'
+import { Card, CardContent } from "@/components/ui/card";
+import { dayjs } from "@/lib/dayjs";
+import { Bot, Loader2, MessageSquare } from "lucide-react";
 
 interface Question {
-  id: string
-  question: string
-  answer?: string | null
-  createdAt: string
-  isGeneratingAnswer?: boolean
+  id: string;
+  question: string;
+  answer?: string | null;
+  createdAt: string;
+  isGeneratingAnswer?: boolean;
 }
 
 interface QuestionItemProps {
-  question: Question
+  question: Question;
 }
 
 export function QuestionItem({ question }: QuestionItemProps) {
-  const isGenerating = question.isGeneratingAnswer
+  const isGenerating = question.isGeneratingAnswer;
 
   return (
     <Card>
       <CardContent>
         <div className="space-y-4">
-          {/* Question */}
           <div className="flex items-start space-x-3">
             <div className="flex-shrink-0">
               <div className="flex size-8 items-center justify-center rounded-full bg-primary/10">
@@ -45,7 +44,7 @@ export function QuestionItem({ question }: QuestionItemProps) {
               </div>
               <div className="flex-1">
                 <p className="mb-1 font-medium text-foreground">
-                  AI agent answer
+                  Kitty AI assistant answer
                 </p>
                 <div className="text-muted-foreground">
                   {isGenerating ? (
@@ -73,5 +72,5 @@ export function QuestionItem({ question }: QuestionItemProps) {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

@@ -1,16 +1,48 @@
-import { CreateRoomForm } from '@/components/create-room-form'
-import { RoomList } from '@/components/room-list'
+import { CreateRoomForm } from "@/components/create-room-form";
+import { Header } from "@/components/header";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Link } from "react-router-dom";
 
 export function CreateRoomPage() {
   return (
-    <section className="min-h-screen px-4 py-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="grid-col-1 grid items-start gap-8">
-          <CreateRoomForm />
+    <section className="min-h-screen">
+      <Header />
 
-          <RoomList />
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col mb-8">
+          <Breadcrumb className="mb-4">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild className="text-action-sm">
+                  <Link to="/">Forum</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <span className="text-action-sm text-primary">Create room</span>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+
+          <div>
+            <h1 className="mb-2 font-bold text-3xl text-foreground">
+              Create a room
+            </h1>
+            <p className="text-muted-foreground">
+              Create a new room to start making questions and receiving
+              questions from our AI Agent.
+            </p>
+          </div>
         </div>
+
+        <CreateRoomForm />
       </div>
     </section>
-  )
+  );
 }
