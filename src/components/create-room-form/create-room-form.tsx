@@ -89,6 +89,7 @@ export const CreateRoomForm = () => {
       description,
     });
     createRoomForm.reset();
+    navigate("/");
   }
 
   return (
@@ -145,11 +146,11 @@ export const CreateRoomForm = () => {
                     }}
                   />
 
-                  <div className="flex items-center justify-end gap-4 pt-4">
+                  <div className="flex flex-col md:flex-row items-center justify-end gap-4 pt-4">
                     <Button
-                      variant="ghost"
+                      variant="secondary"
                       type="button"
-                      className="cursor-pointer"
+                      className="w-full md:w-fit"
                       onClick={handleDiscard}
                     >
                       Discard
@@ -157,7 +158,7 @@ export const CreateRoomForm = () => {
                     <Button
                       variant="default"
                       type="submit"
-                      className="cursor-pointer"
+                      className="w-full md:w-fit"
                     >
                       Create
                     </Button>
