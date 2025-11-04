@@ -32,7 +32,9 @@ To see the REST API, click here: [REST API](https://github.com/wilsonfsouza/live
 
 ## 🔥 Preview
 
-> In progress
+<p align="center">
+  <img style="margin-right: 5px; max-width: 400px;" alt="Application running in desktop and mobile applications" title="#SignInPage" src="./docs/assets/index.png" width="80%">
+</p>
 
 ## ⚙️ Features
 
